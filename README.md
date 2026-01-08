@@ -1,41 +1,36 @@
-# MindCareHub Frontend (Next.js)
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Concept
+## Getting Started
 
-MindCareHub is an innovative online platform designed to revolutionize psychotherapy practice. It offers a comprehensive suite of tools and features to enhance the therapeutic experience for both therapists and patients.
-
-## Key Features
-
-- **Electronic Medical Documentation:** Maintain detailed patient records securely and conveniently.
-- **Real-time Online Therapy:** Conduct therapy sessions with video and audio support for patient comfort. (Work in Progress)
-- **Electronic Journals and Diaries:** Enable patients to maintain electronic journals and emotional state diaries for self-reflection.
-- **Tasks and Support Plans:** Create personalized treatment plans and goals, and set tasks for patient engagement.
-- **Treatment Progress Analysis:** Analyze treatment progress for more effective patient interaction.
-- **Secure Chat and Message Exchange:** Facilitate confidential communication between therapist and patient. (Work in Progress)
-- **Online Payments and Invoicing:** Seamlessly integrate online payment systems and generate electronic invoices. (Work in Progress)
-- **Data Confidentiality and Security:** Ensure patient data is encrypted and protected to the highest standards.
-
-## Installation
-
-### Prerequisites
-
-- Node.js and npm installed on your system
-
-### Instructions
-
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Install dependencies by running:
+First, run the development server:
 
 ```bash
-npm install
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## License
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project is licensed under the MIT licensed.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Contact
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-For support or inquiries, please contact nikitastaselovich@gmail.com.
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
