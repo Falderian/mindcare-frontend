@@ -8,6 +8,7 @@ export const useFetch = <T>() => {
   const fetchData = async (url: string, options?: RequestInit) => {
     if (!url) return;
     setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch(url, options);
       const json: T = await response.json();

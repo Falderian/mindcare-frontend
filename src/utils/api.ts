@@ -1,5 +1,5 @@
 class Api {
-  static url = "http://localhost:3030/";
+  static url = "https://mindcare-backend-v5p1.onrender.com/";
   static auth = this.url + "auth/";
 
   static sign = {
