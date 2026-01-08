@@ -1,7 +1,9 @@
+import { ServerError } from "@/utils/types";
 import { useState } from "react";
 
 export const useFetch = <T>() => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<ServerError | null>(null);
 
   const fetchData = async (url: string, options?: RequestInit) => {
     if (!url) return;
@@ -11,12 +13,13 @@ export const useFetch = <T>() => {
       const json: T = await response.json();
       if ((json as any).error) throw json;
       return json;
-    } catch (err) {
+    } catch (err: unknown) {
+      setError(err as ServerError);
       throw err;
     } finally {
       setIsLoading(false);
     }
   };
 
-  return { isLoading, fetchData };
+  return { isLoading, error, fetchData };
 };

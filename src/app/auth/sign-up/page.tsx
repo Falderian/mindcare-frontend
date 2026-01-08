@@ -1,8 +1,18 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  capitalize,
+  List,
+  ListItem,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useFetch } from "@/hooks/useFetch";
 import Api from "@/utils/api";
+import { useCallback } from "react";
 
 interface FormData {
   email: string;
@@ -20,25 +30,24 @@ const Page = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const { fetchData, isLoading } = useFetch();
-  const onSubmit = () => {
+  const { fetchData, isLoading, error: serverError } = useFetch();
+  const onSubmit = (data: FormData) => {
     const result = fetchData("http://localhost:3030/auth/sign-up", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({}),
-    }).catch(console.error);
+    });
   };
 
   return (
     <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      sx={{ maxWidth: "40%", pt: "15%" }}
+      sx={{ maxWidth: "40%", pt: "10%" }}
     >
       <Typography variant="h5" align="center" gutterBottom>
         Sign Up
       </Typography>
-
       <TextField
         label="Email address"
         type="email"
@@ -48,7 +57,6 @@ const Page = () => {
         error={!!errors.email}
         helperText={errors.email?.message}
       />
-
       <TextField
         label="Password"
         type="password"
@@ -58,7 +66,6 @@ const Page = () => {
         error={!!errors.password}
         helperText={errors.password?.message}
       />
-
       <TextField
         label="Confirm password"
         type="password"
@@ -72,7 +79,6 @@ const Page = () => {
         error={!!errors.confirmPassword}
         helperText={errors.confirmPassword?.message}
       />
-
       <Box sx={{ display: "flex", gap: 2 }}>
         <TextField
           label="First name"
@@ -91,7 +97,6 @@ const Page = () => {
           helperText={errors.lastName?.message}
         />
       </Box>
-
       <Button
         type="submit"
         variant="contained"
