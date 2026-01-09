@@ -3,13 +3,18 @@ import { useFetch } from "@/hooks/useFetch";
 import Api from "@/utils/api";
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { AuthType } from "./AuthModal";
 
 interface SignInData {
   email: string;
   password: string;
 }
 
-export const SignInForm = () => {
+type Props = {
+  setAuthType: (type: AuthType) => void;
+};
+
+export const SignInForm = ({ setAuthType }: Props) => {
   const {
     register,
     handleSubmit,
@@ -28,11 +33,7 @@ export const SignInForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ maxWidth: "30%", pt: "10%" }}
-    >
+    <Box component="form" onSubmit={handleSubmit(onSubmit)}>
       <Typography variant="h5" align="center" gutterBottom>
         Sign In
       </Typography>
@@ -48,7 +49,7 @@ export const SignInForm = () => {
       />
 
       <TextField
-        label="Password"
+        label="Введите пароль"
         type="password"
         fullWidth
         margin="normal"
@@ -67,6 +68,17 @@ export const SignInForm = () => {
       >
         {isLoading ? "Signing In..." : "Sign In"}
       </Button>
+
+      <Box display="flex" flexDirection="row" gap={1} pt={1}>
+        Новый пользователь?
+        <Typography
+          onClick={() => setAuthType("sign-up")}
+          color="primary"
+          sx={{ textDecoration: "underline", cursor: "pointer" }}
+        >
+          Создать аккаунт
+        </Typography>
+      </Box>
 
       {serverError?.message && (
         <Alert severity="error" sx={{ mt: "5%" }}>

@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { AuthType } from "./AuthModal";
 
 interface FormData {
   email: string;
@@ -18,7 +19,11 @@ interface FormData {
   confirmPassword: string;
 }
 
-export const SignUpForm = () => {
+type Props = {
+  setAuthType: (type: AuthType) => void;
+};
+
+export const SignUpForm = ({ setAuthType }: Props) => {
   const {
     register,
     handleSubmit,
@@ -37,7 +42,7 @@ export const SignUpForm = () => {
   };
 
   return (
-    <>
+    <Box>
       <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <Typography variant="h5" align="center" gutterBottom>
           Sign Up
@@ -87,13 +92,23 @@ export const SignUpForm = () => {
             "Submit"
           )}
         </Button>
-
-        {serverError?.message && (
-          <Alert severity="error" sx={{ mt: "5%" }}>
-            {serverError?.message}
-          </Alert>
-        )}
       </Box>
-    </>
+      <Box display="flex" flexDirection="row" gap={1} pt={1}>
+        Уже есть аккаунт?
+        <Typography
+          onClick={() => setAuthType("sign-in")}
+          color="primary"
+          sx={{ textDecoration: "underline", cursor: "pointer" }}
+        >
+          Войти
+        </Typography>
+      </Box>
+
+      {serverError?.message && (
+        <Alert severity="error" sx={{ mt: "5%" }}>
+          {serverError?.message}
+        </Alert>
+      )}
+    </Box>
   );
 };
