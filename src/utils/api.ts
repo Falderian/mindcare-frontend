@@ -1,5 +1,6 @@
 class Api {
-  static url = "https://mindcare-backend-v5p1.onrender.com/";
+  static url =
+    process.env.SERVER_URL || "https://mindcare-backend-v5p1.onrender.com/";
   static auth = this.url + "auth/";
 
   static sign = {

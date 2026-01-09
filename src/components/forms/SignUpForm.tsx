@@ -5,6 +5,7 @@ import {
   Alert,
   Box,
   Button,
+  CircularProgress,
   Snackbar,
   TextField,
   Typography,
@@ -17,7 +18,7 @@ interface FormData {
   confirmPassword: string;
 }
 
-const Page = () => {
+export const SignUpForm = () => {
   const {
     register,
     handleSubmit,
@@ -37,11 +38,7 @@ const Page = () => {
 
   return (
     <>
-      <Box
-        component="form"
-        onSubmit={handleSubmit(onSubmit)}
-        sx={{ maxWidth: "30%", pt: "10%" }}
-      >
+      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <Typography variant="h5" align="center" gutterBottom>
           Sign Up
         </Typography>
@@ -82,9 +79,15 @@ const Page = () => {
           color="primary"
           fullWidth
           sx={{ mt: 3 }}
+          disabled={isLoading}
         >
-          Submit
+          {isLoading ? (
+            <CircularProgress sx={{ color: "white" }} size="1.5rem" />
+          ) : (
+            "Submit"
+          )}
         </Button>
+
         {serverError?.message && (
           <Alert severity="error" sx={{ mt: "5%" }}>
             {serverError?.message}
@@ -94,5 +97,3 @@ const Page = () => {
     </>
   );
 };
-
-export default Page;
