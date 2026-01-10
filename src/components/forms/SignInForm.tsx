@@ -35,25 +35,27 @@ export const SignInForm = ({ setAuthType }: Props) => {
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)}>
       <Typography variant="h5" align="center" gutterBottom>
-        Sign In
+        Войти
       </Typography>
 
       <TextField
-        label="Email address"
+        label="Адрес электронной почты"
         type="email"
         fullWidth
         margin="normal"
-        {...register("email", { required: "Email is required" })}
+        {...register("email", {
+          required: "Требуется адрес электронной почты",
+        })}
         error={!!errors.email}
         helperText={errors.email?.message}
       />
 
       <TextField
-        label="Введите пароль"
+        label="Пароль"
         type="password"
         fullWidth
         margin="normal"
-        {...register("password", { required: "Password is required" })}
+        {...register("password", { required: "Требуется пароль" })}
         error={!!errors.password}
         helperText={errors.password?.message}
       />
@@ -66,7 +68,7 @@ export const SignInForm = ({ setAuthType }: Props) => {
         sx={{ mt: 3 }}
         disabled={isLoading}
       >
-        {isLoading ? "Signing In..." : "Sign In"}
+        {isLoading ? "Вход..." : "Войти"}
       </Button>
 
       <Box display="flex" flexDirection="row" gap={1} pt={1}>

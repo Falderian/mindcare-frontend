@@ -45,35 +45,39 @@ export const SignUpForm = ({ setAuthType }: Props) => {
     <Box>
       <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <Typography variant="h5" align="center" gutterBottom>
-          Sign Up
+          Регистрация
         </Typography>
         <TextField
-          label="Email address"
+          label="Электронная почта"
           type="email"
           fullWidth
           margin="normal"
-          {...register("email", { required: "Email is required" })}
+          {...register("email", {
+            required: "Введите электронную почту",
+          })}
           error={!!errors.email}
           helperText={errors.email?.message}
         />
         <TextField
-          label="Password"
+          label="Пароль"
           type="password"
           fullWidth
           margin="normal"
-          {...register("password", { required: "Password is required" })}
+          {...register("password", {
+            required: "Введите пароль",
+          })}
           error={!!errors.password}
           helperText={errors.password?.message}
         />
         <TextField
-          label="Confirm password"
+          label="Подтверждение пароля"
           type="password"
           fullWidth
           margin="normal"
           {...register("confirmPassword", {
-            required: "Confirm password is required",
+            required: "Введите пароль повторно",
             validate: (value) =>
-              value === watch("password") || "Passwords do not match",
+              value === watch("password") || "Пароли не совпадают",
           })}
           error={!!errors.confirmPassword}
           helperText={errors.confirmPassword?.message}
@@ -89,7 +93,7 @@ export const SignUpForm = ({ setAuthType }: Props) => {
           {isLoading ? (
             <CircularProgress sx={{ color: "white" }} size="1.5rem" />
           ) : (
-            "Submit"
+            "Регистрация"
           )}
         </Button>
       </Box>

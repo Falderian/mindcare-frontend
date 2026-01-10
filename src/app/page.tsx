@@ -1,14 +1,11 @@
 "use client";
-import { AuthModal } from "@/components/forms/AuthModal";
-import { Button } from "@mui/material";
-import { useState } from "react";
+import { Header } from "@/components/Header";
+import { Box } from "@mui/material";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
-      <Button onClick={() => setIsOpen(true)}>auth</Button>
-      <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} />
-    </>
+    <Box width="full">
+      <Header />
+    </Box>
   );
 }

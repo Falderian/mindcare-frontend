@@ -13,7 +13,7 @@ const lightTheme = createTheme({
     },
     background: {
       default: "#fff",
-      paper: "#f6f6f6",
+      paper: "#fff",
     },
   },
   typography: {
