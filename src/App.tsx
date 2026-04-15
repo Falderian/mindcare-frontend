@@ -1,17 +1,9 @@
-import { Button, Container, CssBaseline, Typography } from "@mui/material";
+import { RouterProvider } from "react-router";
+import "./App.css";
+import { router } from "./router/Router";
 
 function App() {
-	return (
-		<Container>
-			<CssBaseline />
-			<Typography variant="h4" component="h1" gutterBottom>
-				React + TS + MUI
-			</Typography>
-			<Button variant="contained" color="primary">
-				Hello World
-			</Button>
-		</Container>
-	);
+	return <RouterProvider router={router} />;
 }
 
 export default App;
